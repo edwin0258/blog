@@ -9,37 +9,37 @@
     <meta name="description" content="OverviewMy final project for CS133B is to make a fully functional minesweeper clone. The class uses Visual Basic, so that will be the language I am going to make the game in. I’ve already gotten a st">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Minesweeper in VB">
-<meta property="og:url" content="https://blog.github.io/2017/11/13/Minesweeper-in-VB/index.html">
+<meta property="og:url" content="https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/index.html">
 <meta property="og:site_name" content="Devin Miller">
 <meta property="og:description" content="OverviewMy final project for CS133B is to make a fully functional minesweeper clone. The class uses Visual Basic, so that will be the language I am going to make the game in. I’ve already gotten a st">
-<meta property="og:image" content="https://blog.github.io/images/minesweeper-background.jpg">
+<meta property="og:image" content="https://edwin0258.github.io/images/minesweeper-background.jpg">
 <meta property="og:updated_time" content="2017-11-13T08:52:28.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Minesweeper in VB">
 <meta name="twitter:description" content="OverviewMy final project for CS133B is to make a fully functional minesweeper clone. The class uses Visual Basic, so that will be the language I am going to make the game in. I’ve already gotten a st">
-<meta name="twitter:image" content="https://blog.github.io/images/minesweeper-background.jpg">
+<meta name="twitter:image" content="https://edwin0258.github.io/images/minesweeper-background.jpg">
     
     
         
           
-              <link rel="shortcut icon" href="/images/favicon.ico">
+              <link rel="shortcut icon" href="/blog/images/favicon.ico">
           
         
         
           
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+            <link rel="icon" type="image/png" href="/blog/images/favicon-192x192.png" sizes="192x192">
           
         
         
           
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+            <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
           
         
     
     <!-- title -->
     <title>Minesweeper in VB</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
     <!-- rss -->
     
     
@@ -55,11 +55,11 @@
     <span id="nav">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/blog/">Home</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/blog/about/">About</a></li>
          
-          <li><a href="/archives/">Archives</a></li>
+          <li><a href="/blog/archives/">Archives</a></li>
         
       </ul>
     </span>
@@ -67,10 +67,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2017/11/13/Livescript-review/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/blog/2017/11/13/Livescript-review/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2017/11/13/Haskell-monads/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/blog/2017/11/13/Haskell-monads/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -83,16 +83,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.github.io/2017/11/13/Minesweeper-in-VB/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&text=Minesweeper in VB"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&is_video=false&description=Minesweeper in VB"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Minesweeper in VB&body=Check out this article: https://blog.github.io/2017/11/13/Minesweeper-in-VB/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&name=Minesweeper in VB&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&text=Minesweeper in VB"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&is_video=false&description=Minesweeper in VB"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Minesweeper in VB&body=Check out this article: https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&name=Minesweeper in VB&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -151,11 +151,11 @@
     <div id="nav-footer" style="display: none">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/blog/">Home</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/blog/about/">About</a></li>
          
-          <li><a href="/archives/">Archives</a></li>
+          <li><a href="/blog/archives/">Archives</a></li>
         
       </ul>
     </div>
@@ -166,16 +166,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.github.io/2017/11/13/Minesweeper-in-VB/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&text=Minesweeper in VB"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&is_video=false&description=Minesweeper in VB"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Minesweeper in VB&body=Check out this article: https://blog.github.io/2017/11/13/Minesweeper-in-VB/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.github.io/2017/11/13/Minesweeper-in-VB/&name=Minesweeper in VB&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&text=Minesweeper in VB"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&is_video=false&description=Minesweeper in VB"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Minesweeper in VB&body=Check out this article: https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&title=Minesweeper in VB"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://edwin0258.github.io/2017/11/13/Minesweeper-in-VB/&name=Minesweeper in VB&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -201,11 +201,11 @@
     <nav>
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/blog/">Home</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/blog/about/">About</a></li>
          
-          <li><a href="/archives/">Archives</a></li>
+          <li><a href="/blog/archives/">Archives</a></li>
         
       </ul>
     </nav>
@@ -215,14 +215,14 @@
 </body>
 </html>
 <!-- styles -->
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
-<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/blog/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/blog/lib/justified-gallery/justifiedGallery.min.css">
 
 <!-- jquery -->
-<script src="/lib/jquery/jquery.min.js"></script>
-<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
-<script src="/js/main.js"></script>
+<script src="/blog/lib/jquery/jquery.min.js"></script>
+<script src="/blog/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/blog/js/main.js"></script>
 <!-- search -->
 
 <!-- Google Analytics -->
