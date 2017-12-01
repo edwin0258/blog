@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="IntroductionIn this post I will be solving some programming problems with JS and Haskell. This gives a side by side comparison of the two languages and I thought it would be interesting to see the sim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS to Haskell (Simple Problems)">
+<meta property="og:url" content="https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/index.html">
+<meta property="og:site_name" content="Devin Miller">
+<meta property="og:description" content="IntroductionIn this post I will be solving some programming problems with JS and Haskell. This gives a side by side comparison of the two languages and I thought it would be interesting to see the sim">
+<meta property="og:updated_time" content="2017-12-01T18:15:12.365Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS to Haskell (Simple Problems)">
+<meta name="twitter:description" content="IntroductionIn this post I will be solving some programming problems with JS and Haskell. This gives a side by side comparison of the two languages and I thought it would be interesting to see the sim">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/blog/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/blog/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>JS to Haskell (Simple Problems)</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/blog/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/blog/">Home</a></li>
+         
+          <li><a href="/blog/about/">About</a></li>
+         
+          <li><a href="/blog/archives/">Archives</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/blog/2017/11/20/Intro-to-Lambda-Calculus/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&text=JS to Haskell (Simple Problems)"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&title=JS to Haskell (Simple Problems)"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&is_video=false&description=JS to Haskell (Simple Problems)"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JS to Haskell (Simple Problems)&body=Check out this article: https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&title=JS to Haskell (Simple Problems)"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&title=JS to Haskell (Simple Problems)"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&title=JS to Haskell (Simple Problems)"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&title=JS to Haskell (Simple Problems)"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&name=JS to Haskell (Simple Problems)&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-1-Christmas-Trees"><span class="toc-number">2.</span> <span class="toc-text">Problem 1 (Christmas Trees)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Overview"><span class="toc-number">2.1.</span> <span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Details"><span class="toc-number">2.2.</span> <span class="toc-text">Details</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript-Solution"><span class="toc-number">2.3.</span> <span class="toc-text">Javascript Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Haskell-Solution"><span class="toc-number">2.4.</span> <span class="toc-text">Haskell Solution</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-2-Tic-Tac-Toe"><span class="toc-number">3.</span> <span class="toc-text">Problem 2 (Tic Tac Toe)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Overview-1"><span class="toc-number">3.1.</span> <span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Details-1"><span class="toc-number">3.2.</span> <span class="toc-text">Details</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript-Solution-1"><span class="toc-number">3.3.</span> <span class="toc-text">Javascript Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Haskell-Solution-1"><span class="toc-number">3.4.</span> <span class="toc-text">Haskell Solution</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">4.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        JS to Haskell (Simple Problems)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Devin Miller</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-11-30T05:47:53.000Z" itemprop="datePublished">2017-11-30</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>In this post I will be solving some programming problems with JS and Haskell. This gives a side by side comparison of the two languages and I thought it would be interesting to see the similarities and differences. Let’s get started.</p>
+<h2 id="Problem-1-Christmas-Trees"><a href="#Problem-1-Christmas-Trees" class="headerlink" title="Problem 1 (Christmas Trees)"></a>Problem 1 (Christmas Trees)</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>Let’s pretend you are the seller of colorful christmas trees online. Each color has a different price and your job here is to calculate the total cost of christmas tree orders for each customer. Customers can choose the color, lights, and height of each tree.</p>
+<h3 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h3><table>
+<thead>
+<tr>
+<th>Tree Color</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Red</td>
+<td>250$</td>
+</tr>
+<tr>
+<td>Blue</td>
+<td>200$</td>
+</tr>
+<tr>
+<td>Yellow</td>
+<td>170$</td>
+</tr>
+<tr>
+<td>Green</td>
+<td>200$</td>
+</tr>
+<tr>
+<td>Silver</td>
+<td>340$</td>
+</tr>
+<tr>
+<td>Gold</td>
+<td>400$</td>
+</tr>
+<tr>
+<td>White</td>
+<td>450$</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Light Type</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unlit</td>
+<td>+0$</td>
+</tr>
+<tr>
+<td>White</td>
+<td>+15$</td>
+</tr>
+<tr>
+<td>Multi-color</td>
+<td>+30$</td>
+</tr>
+<tr>
+<td>Single-color</td>
+<td>+20$</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Height</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 feet and under</td>
+<td>+0$</td>
+</tr>
+<tr>
+<td>6 feet</td>
+<td>+50$</td>
+</tr>
+<tr>
+<td>7 feet</td>
+<td>+100$</td>
+</tr>
+<tr>
+<td>8 feet</td>
+<td>+150$</td>
+</tr>
+<tr>
+<td>8+ feet</td>
+<td>+200$</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: We can take multiple tree orders at a time<br>We are also assuming that the data entered by the user is valid.</em></p>
+<h3 id="Javascript-Solution"><a href="#Javascript-Solution" class="headerlink" title="Javascript Solution"></a>Javascript Solution</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> trees = &#123;</span><br><span class="line">  <span class="string">"red"</span>:    <span class="number">250</span>,</span><br><span class="line">  <span class="string">"blue"</span>:   <span class="number">200</span>,</span><br><span class="line">  <span class="string">"green"</span>:  <span class="number">200</span>,</span><br><span class="line">  <span class="string">"yellow"</span>: <span class="number">170</span>,</span><br><span class="line">  <span class="string">"silver"</span>: <span class="number">340</span>,</span><br><span class="line">  <span class="string">"gold"</span>:   <span class="number">400</span>,</span><br><span class="line">  <span class="string">"white"</span>:  <span class="number">450</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> lights = &#123;</span><br><span class="line">  <span class="string">"unlit"</span>:  <span class="number">0</span>,</span><br><span class="line">  <span class="string">"white"</span>:  <span class="number">15</span>,</span><br><span class="line">  <span class="string">"multi"</span>:  <span class="number">30</span>,</span><br><span class="line">  <span class="string">"single"</span>: <span class="number">20</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> heights = <span class="function"><span class="params">x</span> =&gt;</span> &#123; </span><br><span class="line">  <span class="keyword">switch</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> (x &lt;= <span class="number">5</span>): <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">case</span> (x &lt;= <span class="number">6</span>): <span class="keyword">return</span> <span class="number">50</span></span><br><span class="line">    <span class="keyword">case</span> (x &lt;= <span class="number">7</span>): <span class="keyword">return</span> <span class="number">100</span></span><br><span class="line">    <span class="keyword">case</span> (x &lt;= <span class="number">8</span>): <span class="keyword">return</span> <span class="number">150</span></span><br><span class="line">    <span class="keyword">default</span>:       <span class="keyword">return</span> <span class="number">200</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> treeOrder = <span class="function">(<span class="params">...orders</span>) =&gt;</span></span><br><span class="line">    orders.reduce(<span class="function">(<span class="params">t, [tree, type, height]</span>) =&gt;</span></span><br><span class="line">        t += trees[tree] + lights[type] + heights(height),<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>Here I create 2 constant lookup tables for <code>trees</code> and <code>lights</code> to store the prices. Height is a little more tricky because there are an infinite number of possibilities the number could be (In a real world situation there would probably be only a set number of sizes to choose from, so a lookup table would be possible). I created a simple switch inside the <code>heights</code> function to account for the varient in potential input.</p>
+<p>The <code>treeOrder</code> function will take any number of orders and reduce them to a single total value. For each order, I use pattern matching to get the tree color, light type, and height. Using these values, I’m able to get some price amounts which are all added to the total amount.</p>
+<h3 id="Haskell-Solution"><a href="#Haskell-Solution" class="headerlink" title="Haskell Solution"></a>Haskell Solution</h3><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Control.Monad</span><br><span class="line"></span><br><span class="line"><span class="title">treeOrder</span> :: [(<span class="type">String</span>, <span class="type">String</span>, <span class="type">Integer</span>)] -&gt; <span class="type">Maybe</span> <span class="type">Integer</span></span><br><span class="line"><span class="title">treeOrder</span> [] = <span class="type">Just</span> <span class="number">0</span></span><br><span class="line"><span class="title">treeOrder</span> orders = foldM (fmap . (+)) <span class="number">0</span> info</span><br><span class="line">  <span class="keyword">where</span> trees = [(<span class="string">"red"</span>,    <span class="number">250</span>)</span><br><span class="line">                ,(<span class="string">"blue"</span>,   <span class="number">200</span>)</span><br><span class="line">                ,(<span class="string">"green"</span>,  <span class="number">200</span>)</span><br><span class="line">                ,(<span class="string">"yellow"</span>, <span class="number">170</span>)</span><br><span class="line">                ,(<span class="string">"silver"</span>, <span class="number">340</span>)</span><br><span class="line">                ,(<span class="string">"gold"</span>,   <span class="number">400</span>)</span><br><span class="line">                ,(<span class="string">"white"</span>,  <span class="number">450</span>)]</span><br><span class="line">                </span><br><span class="line">        lights = [(<span class="string">"unlit"</span>,  <span class="number">0</span>)</span><br><span class="line">                ,(<span class="string">"white"</span>,  <span class="number">15</span>)</span><br><span class="line">                ,(<span class="string">"multi"</span>,  <span class="number">30</span>)</span><br><span class="line">                ,(<span class="string">"single"</span>, <span class="number">20</span>)]</span><br><span class="line">        </span><br><span class="line">        heights x</span><br><span class="line">          | x &lt;= <span class="number">5</span> = <span class="number">0</span></span><br><span class="line">          | x &lt;= <span class="number">6</span> = <span class="number">50</span></span><br><span class="line">          | x &lt;= <span class="number">7</span> = <span class="number">100</span></span><br><span class="line">          | x &lt;= <span class="number">8</span> = <span class="number">150</span></span><br><span class="line">          | otherwise = <span class="number">200</span></span><br><span class="line">        </span><br><span class="line">        (tree, light, height) = head orders</span><br><span class="line">        </span><br><span class="line">        info = [lookup tree trees</span><br><span class="line">               ,lookup light lights</span><br><span class="line">               ,<span class="type">Just</span> $ heights height</span><br><span class="line">               ,getTree $ tail orders]</span><br></pre></td></tr></table></figure>
+<p>With Haskell, I define the lookup tables and height function inside the <code>where</code> clause of the <code>treeOrder</code> function. I am then using pattern matching after the height function to get the tree, light, and height values for the current order. <code>info</code> combines all the lookup values and function value into a list. The last element of the info list is how all orders will be added together, using recursion. So, the next orders values will show up as the last element of the <code>info</code> list once it is time to add everything together.</p>
+<p>Once the full list has been calculated, I fold over the values to get a single total value (like reduce). </p>
+<h2 id="Problem-2-Tic-Tac-Toe"><a href="#Problem-2-Tic-Tac-Toe" class="headerlink" title="Problem 2 (Tic Tac Toe)"></a>Problem 2 (Tic Tac Toe)</h2><h3 id="Overview-1"><a href="#Overview-1" class="headerlink" title="Overview"></a>Overview</h3><p>Create an interface that users can play a game of tic tac toe on.</p>
+<h3 id="Details-1"><a href="#Details-1" class="headerlink" title="Details"></a>Details</h3><ul>
+<li>Users should be able to add their color (x or o) to the board.</li>
+<li>When there are 3 of a color in any particular direction, that user wins!</li>
+<li>Function should take a move or multiple moves.</li>
+<li>Input is expected to be valid to avoid adding too much complexity to solutions.</li>
+</ul>
+<h3 id="Javascript-Solution-1"><a href="#Javascript-Solution-1" class="headerlink" title="Javascript Solution"></a>Javascript Solution</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> transpose = <span class="function"><span class="params">array</span> =&gt;</span></span><br><span class="line">  array[<span class="number">0</span>].map(<span class="function">(<span class="params">col, i</span>) =&gt;</span> array.map(<span class="function"><span class="params">row</span> =&gt;</span> row[i]));</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> move = <span class="function">(<span class="params">board, moves, color</span>) =&gt;</span> </span><br><span class="line">  moves.reduce(<span class="function">(<span class="params">arr, [y,x]</span>) =&gt;</span> &#123;</span><br><span class="line">    arr[y][x] = color;</span><br><span class="line">    color = (color == <span class="string">"x"</span>) ? <span class="string">"o"</span> : <span class="string">"x"</span>;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">  &#125;, board);</span><br><span class="line">  </span><br><span class="line"><span class="keyword">const</span> genBoard = <span class="function">(<span class="params">x, y</span>) =&gt;</span> </span><br><span class="line">  <span class="built_in">Array</span>(x).fill().map(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">Array</span>(y).fill(<span class="string">""</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> check = <span class="function"><span class="params">board</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> getVal = <span class="function"><span class="params">lst</span> =&gt;</span> [...new <span class="built_in">Set</span>(lst)];</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> chk = <span class="function"><span class="params">x</span> =&gt;</span> (getVal(x).length == <span class="number">1</span>) ? getVal(x)[<span class="number">0</span>] : <span class="string">""</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> horzCheck = board.map(chk);</span><br><span class="line">  <span class="keyword">const</span> vertCheck = transpose(board).map(chk);</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">diagonalCheck</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> [d1, d2] = [[],[]];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(x = <span class="number">0</span>; x &lt; board.length; x++) &#123;</span><br><span class="line">      d1.push(board[x][x]);</span><br><span class="line">      d2.push(board[x][board[<span class="number">0</span>].length - <span class="number">1</span> - x]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> [d1].map(chk).concat([d2].map(chk));</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> result = [...horzCheck, ...vertCheck, ...diagonalCheck()];</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span>(result.includes(<span class="string">"x"</span>) &amp;&amp; result.includes(<span class="string">"o"</span>)) <span class="keyword">return</span> <span class="string">"Tie"</span>;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(result.includes(<span class="string">"x"</span>)) <span class="keyword">return</span> <span class="string">"Black wins!"</span>;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(result.includes(<span class="string">"o"</span>)) <span class="keyword">return</span> <span class="string">"White wins!"</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="string">"No one wins."</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>Running a game in console</em><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">let</span> g = move(genBoard(<span class="number">3</span>,<span class="number">3</span>),[[<span class="number">0</span>,<span class="number">0</span>],[<span class="number">2</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">2</span>],[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">2</span>],[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">2</span>,<span class="number">0</span>]],<span class="string">"x"</span>)</span><br><span class="line">=&gt; <span class="literal">undefined</span></span><br><span class="line">&gt; check(g)</span><br><span class="line">=&gt; <span class="string">'White wins!'</span></span><br></pre></td></tr></table></figure></p>
+<p>I will go over the the code by line numbers to make it a little easier to organize my thoughts.</p>
+<p><strong>1</strong> - To make life easier, I first define a transpose function. It will take an array and swap the columns and rows.</p>
+<p><strong>4</strong> - <code>move</code> takes a board, move, and a color. It adds the moves to the board using a <code>reduce</code>, on each loop in the reduce the color is changed to the opposite color. It might be a little silly to use a <code>reduce</code>, but this way I can some avoid extra code.</p>
+<p><strong>11</strong> - <code>genBoard</code> is a helper function for generating an array of arrays that represents the tic tac toe board.</p>
+<p><strong>15</strong> - <code>getVal</code> will return a list of unique values.</p>
+<p><strong>17</strong> - <code>chk</code> is the general checker for sections of the board. If all values in a section are the same then we return that value, else return an empty string.</p>
+<p><strong>19/20</strong> - More specific checks for columns and rows of the board (horizontal and vertical).</p>
+<p><strong>22</strong> - Checking diagonals on the board is a little more tricky. By incrementing both x and y index for each pass of a for loop I can get the diagonal from left to right. If y is counting up and x is counting down I can also get the right to left diagonal (line 27).</p>
+<p><strong>35</strong> - Often I omit the curly braces on single line expressions. Just seems cleaner and more readable. Depending on all the checks, the <code>check</code> function is now returning the correct message.</p>
+<h3 id="Haskell-Solution-1"><a href="#Haskell-Solution-1" class="headerlink" title="Haskell Solution"></a>Haskell Solution</h3><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Data.List</span><br><span class="line"></span><br><span class="line"><span class="title">genBoard</span> :: <span class="type">Int</span> -&gt; <span class="type">Int</span> -&gt; [[<span class="type">String</span>]]</span><br><span class="line"><span class="title">genBoard</span> x y = take y $ cycle [take x $ repeat <span class="string">""</span>]</span><br><span class="line"></span><br><span class="line"><span class="title">move</span> :: [(<span class="type">Int</span>, <span class="type">Int</span>)] -&gt; [[<span class="type">String</span>]] -&gt; <span class="type">String</span> -&gt; [[<span class="type">String</span>]]</span><br><span class="line"><span class="title">move</span> [] board _ = board</span><br><span class="line"><span class="title">move</span> moves board color = move (tail moves) newBoard nextColor</span><br><span class="line">  <span class="keyword">where</span> mv = head moves</span><br><span class="line">        nextColor </span><br><span class="line">          | color == <span class="string">"x"</span> = <span class="string">"o"</span></span><br><span class="line">          | otherwise    = <span class="string">"x"</span></span><br><span class="line">        newRow = replace (fst mv) color (board !! (snd mv))</span><br><span class="line">        newBoard = replace (snd mv) newRow board</span><br><span class="line">        </span><br><span class="line">        replace n newVal (x:xs)</span><br><span class="line">          | n == <span class="number">0</span> = newVal:xs</span><br><span class="line">          | otherwise = x:replace (n<span class="number">-1</span>) newVal xs </span><br><span class="line"></span><br><span class="line"><span class="title">check</span> :: [[<span class="type">String</span>]] -&gt; <span class="type">String</span></span><br><span class="line"><span class="title">check</span> board</span><br><span class="line">  | <span class="string">"o"</span> `elem` result &amp;&amp; <span class="string">"x"</span> `elem` result = <span class="string">"Tie"</span></span><br><span class="line">  | <span class="string">"o"</span> `elem` result = <span class="string">"White wins!"</span></span><br><span class="line">  | <span class="string">"x"</span> `elem` result = <span class="string">"Black wins!"</span></span><br><span class="line">  | otherwise = <span class="string">"No one wins."</span></span><br><span class="line">  <span class="keyword">where</span> chk x = foldl (\acc a -&gt; <span class="keyword">if</span> (length $ nub a) == <span class="number">1</span> <span class="keyword">then</span> a !! <span class="number">0</span>:acc <span class="keyword">else</span> acc) [] x</span><br><span class="line">        </span><br><span class="line">        horzCheck = chk board</span><br><span class="line">        vertCheck = chk $ transpose board</span><br><span class="line">        diagonalCheck = chk  </span><br><span class="line">          [zipWith (!!) board [<span class="number">0.</span>.]</span><br><span class="line">          ,zipWith (!!) board [length board<span class="number">-1</span>,length board<span class="number">-2.</span>.]]</span><br><span class="line">        </span><br><span class="line">        result = horzCheck ++ vertCheck ++ diagonalCheck</span><br></pre></td></tr></table></figure>
+<p><em>Running a game in GHCi</em><br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">let</span> g = game [(<span class="number">0</span>,<span class="number">0</span>),(<span class="number">2</span>,<span class="number">1</span>),(<span class="number">0</span>,<span class="number">1</span>),(<span class="number">0</span>,<span class="number">2</span>),(<span class="number">1</span>,<span class="number">1</span>),(<span class="number">2</span>,<span class="number">2</span>),(<span class="number">1</span>,<span class="number">2</span>),(<span class="number">2</span>,<span class="number">0</span>)] (genBoard <span class="number">3</span> <span class="number">3</span>) <span class="string">"x"</span></span><br><span class="line">&gt; check g</span><br><span class="line">=&gt; <span class="string">"White wins!"</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>1</strong> - Import a package in haskell, <code>Data.List</code> has some useful functions like <code>transpose</code> (I had to make this in JS).</p>
+<p><strong>3</strong> - <code>genBoard</code> is a helper function for generating a game board. This will repeat an empty string <code>x</code> times and place it into a list. I then take <code>y</code> out of an infinite cycle of the previous list, which returns a list of lists with the correct dimensions. I could have also used a list comprehension here, but I think this looks cleaner.</p>
+<p><strong>6</strong> - This type signature for the function is kind of interesting. The <code>move</code> function takes a list of tuples representing the coordinates, a list of lists containing strings (the board), and a string (representing the color). It returns a new board.</p>
+<p><strong>7</strong> - If there are no more moves to make then return the final board. This is how the recursive function will stop.</p>
+<p><strong>8</strong> - Haskell loves recursion, since there are possibly more moves, I pass all the moves except the the current move back into the <code>move</code> function with the next color and updated board.</p>
+<p><strong>11</strong> - The guard (similar to a switch(true)?) gets the next color, if previous color was black then the next color will be white for example.</p>
+<p><strong>13</strong> - <code>newRow</code> is the row with the new piece placed on it from move. Since data is immutable in haskell, I can’t directly state <code>(board !! y !! x) = color</code>. Line 14 is the whole board, so once we have the correct row, we then can place it into a new copy of the board. It’s sort of confusing, but it gets the job done. I could have used <code>Control.Lens</code> but this method feels a bit cleaner.</p>
+<p><strong>16</strong> - <code>replace</code> will go through the list one index at a time until n is 0, once n is 0 it will replace the current item under it with the new value. This function also uses recursion.</p>
+<p><strong>21</strong> - <code>check</code> has a guard that will check the <code>result</code> for the contents and then determine the appropriate message to display. </p>
+<p><strong>26</strong> - I like to think that <code>foldl</code> is kind of like a JS <code>reduce</code>. The rest of the fold is basically the same thought process as in JS, just different syntax.</p>
+<p><strong>31</strong> - Using <code>zipWith</code> I can write some fairly clean code to get the diagonals of the board.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Awesome stuff! It’s interesting to see two fairly different languages side-by-side. There are definitely some similarities, such as the <code>guard</code> and <code>switch</code> or <code>foldl</code> and <code>reduce</code>. There are also differences; Haskell being a statically typed for example. Try to find your own similarities and differences, cheers!</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/blog/">Home</a></li>
+         
+          <li><a href="/blog/about/">About</a></li>
+         
+          <li><a href="/blog/archives/">Archives</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-1-Christmas-Trees"><span class="toc-number">2.</span> <span class="toc-text">Problem 1 (Christmas Trees)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Overview"><span class="toc-number">2.1.</span> <span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Details"><span class="toc-number">2.2.</span> <span class="toc-text">Details</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript-Solution"><span class="toc-number">2.3.</span> <span class="toc-text">Javascript Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Haskell-Solution"><span class="toc-number">2.4.</span> <span class="toc-text">Haskell Solution</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-2-Tic-Tac-Toe"><span class="toc-number">3.</span> <span class="toc-text">Problem 2 (Tic Tac Toe)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Overview-1"><span class="toc-number">3.1.</span> <span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Details-1"><span class="toc-number">3.2.</span> <span class="toc-text">Details</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript-Solution-1"><span class="toc-number">3.3.</span> <span class="toc-text">Javascript Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Haskell-Solution-1"><span class="toc-number">3.4.</span> <span class="toc-text">Haskell Solution</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">4.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&text=JS to Haskell (Simple Problems)"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&title=JS to Haskell (Simple Problems)"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&is_video=false&description=JS to Haskell (Simple Problems)"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JS to Haskell (Simple Problems)&body=Check out this article: https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&title=JS to Haskell (Simple Problems)"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&title=JS to Haskell (Simple Problems)"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&title=JS to Haskell (Simple Problems)"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&title=JS to Haskell (Simple Problems)"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://edwin0258.github.io/2017/11/30/JS-to-Haskell-Simple-Problems/&name=JS to Haskell (Simple Problems)&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Devin Miller
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/blog/">Home</a></li>
+         
+          <li><a href="/blog/about/">About</a></li>
+         
+          <li><a href="/blog/archives/">Archives</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/blog/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/blog/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/blog/lib/jquery/jquery.min.js"></script>
+<script src="/blog/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/blog/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
