@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="IntroductionA few days ago I was introduced to the concept of monads. In this postI want to go over the concept to solidify it in my memory. Monads weren’t too scary because the concept was slowly bui">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Haskell Monads">
+<meta property="og:url" content="http://example.com/2017/11/13/Haskell-Monads/index.html">
+<meta property="og:site_name" content="Personal Blog">
+<meta property="og:description" content="IntroductionA few days ago I was introduced to the concept of monads. In this postI want to go over the concept to solidify it in my memory. Monads weren’t too scary because the concept was slowly bui">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-11-13T21:27:44.000Z">
+<meta property="article:modified_time" content="2022-06-17T21:19:07.346Z">
+<meta property="article:author" content="Devin Miller">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Haskell Monads</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Posts</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2017/11/13/Livescript-Review/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2017/11/13/Minesweeper-in-VB/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2017/11/13/Haskell-Monads/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2017/11/13/Haskell-Monads/&text=Haskell Monads"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2017/11/13/Haskell-Monads/&title=Haskell Monads"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2017/11/13/Haskell-Monads/&is_video=false&description=Haskell Monads"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Haskell Monads&body=Check out this article: http://example.com/2017/11/13/Haskell-Monads/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2017/11/13/Haskell-Monads/&title=Haskell Monads"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2017/11/13/Haskell-Monads/&title=Haskell Monads"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2017/11/13/Haskell-Monads/&title=Haskell Monads"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2017/11/13/Haskell-Monads/&title=Haskell Monads"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2017/11/13/Haskell-Monads/&name=Haskell Monads&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2017/11/13/Haskell-Monads/&t=Haskell Monads"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Definition"><span class="toc-number">2.</span> <span class="toc-text">Definition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Examples"><span class="toc-number">3.</span> <span class="toc-text">Examples</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-Monad"><span class="toc-number">4.</span> <span class="toc-text">Using Monad</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Haskell Monads
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Devin Miller</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2017-11-13T21:27:44.000Z" itemprop="datePublished">2017-11-13</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a href="#Introduction" title="Introduction">Introduction</a></h2><p>A few days ago I was introduced to the concept of <code>monads</code>. In this post<br>I want to go over the concept to solidify it in my memory.</p>
+<p>Monads weren’t too scary because the concept was slowly built up to with<br><code>functors</code> and <code>monoids</code> with<br><a target="_blank" rel="noopener" href="http://learnyouahaskell.com/">learnyouahaskell</a>. I would recommend it to<br>anyone who wants to learn a little bit about the Haskell programming<br>language. Also, for anyone who doesn’t know Haskell, it could be<br>described as a pure, lazy functional programming language, you should<br>check it out.</p>
+<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a><a href="#Definition" title="Definition">Definition</a></h2><p>Monad is basically a description for a type that follows some set rules.<br>It is also a monoid by default, because a monad follows all the same<br>rules a monoid does. As learnyouahaskell described it can also be<br>described as a beefed up applicative functor. I found a good<br>introduction to monoids and monads on youtube, try watching this video<br>called <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ZhuHCtR3xq8">Don’t fear the<br>monad</a>.</p>
+<p>For reference, here is the Monad type class.</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Monad</span> m <span class="keyword">where</span></span>  </span><br><span class="line">    return :: a -&gt; m a  </span><br><span class="line">  </span><br><span class="line">    (&gt;&gt;=) :: m a -&gt; (a -&gt; m b) -&gt; m b  </span><br><span class="line">  </span><br><span class="line">    (&gt;&gt;) :: m a -&gt; m b -&gt; m b  </span><br><span class="line">    x &gt;&gt; y = x &gt;&gt;= \_ -&gt; y  </span><br><span class="line">  </span><br><span class="line">    fail :: <span class="type">String</span> -&gt; m a  </span><br><span class="line">    fail msg = error msg</span><br></pre></td></tr></table></figure>
+
+<p><code>return</code> is like <code>pure</code> for a functor. It returns the purest form of the<br>type which in this case is a value with a type. <code>&gt;&gt;=</code> is used to take<br>the values out of a monad and apply them to a function that takes a<br>general value. The result of that function is a monad of the same type.<br><code>&gt;&gt;</code> takes two arguments and returns the last argument; however, if the<br>first argument is <code>mempty</code> then it will propagate to the result making<br>it <code>mempty</code>. For example:</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ghci</span>&gt; <span class="type">Nothing</span> &gt;&gt; <span class="type">Just</span> <span class="number">1</span></span><br><span class="line"><span class="type">Nothing</span></span><br><span class="line"><span class="title">ghci</span>&gt; <span class="type">Just</span> <span class="number">1</span> &gt;&gt; <span class="type">Just</span> <span class="number">3</span></span><br><span class="line"><span class="type">Just</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a><a href="#Examples" title="Examples">Examples</a></h2><p>The most basic example of a monad is the <code>Maybe</code> type. Here is how<br><code>Maybe</code> is implemented as an instance of <code>Monad</code></p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Monad</span> <span class="type">Maybe</span> <span class="keyword">where</span></span>  </span><br><span class="line">    return x = <span class="type">Just</span> x  </span><br><span class="line">    <span class="type">Nothing</span> &gt;&gt;= f = <span class="type">Nothing</span>  </span><br><span class="line">    <span class="type">Just</span> x &gt;&gt;= f  = f x  </span><br><span class="line">    fail _ = <span class="type">Nothing</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Maybe</code> on return will return <code>Just</code> with the value. If <code>Nothing</code> is<br>passed to <code>&gt;&gt;=</code> then Nothing will propagate to the return of the<br>function. If <code>Just</code> with a value is passed to <code>&gt;&gt;=</code> then the value will<br>be taken out of <code>Just</code> and passed to the function. <code>&gt;&gt;</code> has a default<br>implementation so it’s not added to <code>Maybe</code>. Here is the default<br>implementation:</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(&gt;&gt;) :: (<span class="type">Monad</span> m) =&gt; m a -&gt; m b -&gt; m b  </span><br><span class="line"><span class="title">m</span> &gt;&gt; n = m &gt;&gt;= \_ -&gt; n</span><br></pre></td></tr></table></figure>
+
+<h2 id="Using-Monad"><a href="#Using-Monad" class="headerlink" title="Using Monad"></a><a href="#Using-Monads" title="Using Monads">Using Monad</a></h2><p>Here’s an example using the Maybe monad with <code>&gt;&gt;=</code> and a <code>do</code> block<br>which is syntactical sugar for <code>&gt;&gt;=</code></p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Just</span> <span class="number">55</span> &gt;&gt;= (\x -&gt; <span class="type">Just</span> (<span class="number">5</span> + x)) <span class="comment">-- Just 60</span></span><br></pre></td></tr></table></figure>
+
+<p>And the do block</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">example</span> = <span class="keyword">do</span></span><br><span class="line">    x &lt;- <span class="type">Just</span> <span class="number">55</span></span><br><span class="line">    <span class="type">Just</span> (x + <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<p>And here is a list example (lists are also monads)</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>] &gt;&gt;= \x -&gt; [(+<span class="number">2</span>), (*<span class="number">3</span>)] &gt;&gt;= \ch -&gt; return (x, ch x)</span><br><span class="line"><span class="comment">-- [(1,3),(1,3),(2,4),(2,6),(3,5),(3,9),(4,6),(4,12)]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a><a href="#Conclusion" title="Conclusion">Conclusion</a></h2><p>I’m just getting into monads but I can tell they are a very powerful<br>tool. I’m excited to keep exploring Haskell and all of its cool<br>features.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Definition"><span class="toc-number">2.</span> <span class="toc-text">Definition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Examples"><span class="toc-number">3.</span> <span class="toc-text">Examples</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-Monad"><span class="toc-number">4.</span> <span class="toc-text">Using Monad</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2017/11/13/Haskell-Monads/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2017/11/13/Haskell-Monads/&text=Haskell Monads"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2017/11/13/Haskell-Monads/&title=Haskell Monads"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2017/11/13/Haskell-Monads/&is_video=false&description=Haskell Monads"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Haskell Monads&body=Check out this article: http://example.com/2017/11/13/Haskell-Monads/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2017/11/13/Haskell-Monads/&title=Haskell Monads"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2017/11/13/Haskell-Monads/&title=Haskell Monads"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2017/11/13/Haskell-Monads/&title=Haskell Monads"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2017/11/13/Haskell-Monads/&title=Haskell Monads"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2017/11/13/Haskell-Monads/&name=Haskell Monads&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2017/11/13/Haskell-Monads/&t=Haskell Monads"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2022
+    Devin Miller
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Posts</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

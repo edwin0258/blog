@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="OverviewLivescript is a javascript preprocessor that has many functional programming features included in it. I decided to write a basic Assembler Interpreter on codepen to try it out. This is really">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Livescript Review">
+<meta property="og:url" content="http://example.com/2017/11/13/Livescript-Review/index.html">
+<meta property="og:site_name" content="Personal Blog">
+<meta property="og:description" content="OverviewLivescript is a javascript preprocessor that has many functional programming features included in it. I decided to write a basic Assembler Interpreter on codepen to try it out. This is really">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-11-13T21:27:44.000Z">
+<meta property="article:modified_time" content="2022-06-17T20:52:58.361Z">
+<meta property="article:author" content="Devin Miller">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Livescript Review</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Posts</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2017/11/20/Intro-to-Lambda-Calculus/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2017/11/13/Haskell-Monads/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2017/11/13/Livescript-Review/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2017/11/13/Livescript-Review/&text=Livescript Review"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2017/11/13/Livescript-Review/&title=Livescript Review"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2017/11/13/Livescript-Review/&is_video=false&description=Livescript Review"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Livescript Review&body=Check out this article: http://example.com/2017/11/13/Livescript-Review/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2017/11/13/Livescript-Review/&title=Livescript Review"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2017/11/13/Livescript-Review/&title=Livescript Review"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2017/11/13/Livescript-Review/&title=Livescript Review"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2017/11/13/Livescript-Review/&title=Livescript Review"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2017/11/13/Livescript-Review/&name=Livescript Review&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2017/11/13/Livescript-Review/&t=Livescript Review"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-number">1.</span> <span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Indepth"><span class="toc-number">2.</span> <span class="toc-text">Indepth</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Comprehensions-and-Ranges"><span class="toc-number">2.1.</span> <span class="toc-text">Comprehensions and Ranges</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Strict-equality-and-Immutability"><span class="toc-number">2.2.</span> <span class="toc-text">Strict equality and Immutability</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Currying-Piping-Partial-application"><span class="toc-number">2.3.</span> <span class="toc-text">Currying, Piping, Partial application</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">3.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other-Resources"><span class="toc-number">4.</span> <span class="toc-text">Other Resources</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Livescript Review
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Devin Miller</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2017-11-13T21:27:44.000Z" itemprop="datePublished">2017-11-13</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a><a href="#Overview" title="Overview">Overview</a></h2><p><a target="_blank" rel="noopener" href="http://livescript.net/">Livescript</a> is a javascript preprocessor that has many functional programming features included in it. I decided to write a basic <a target="_blank" rel="noopener" href="https://codepen.io/edwin0258/pen/WXxpMY">Assembler Interpreter</a> on codepen to try it out. This is really the first JS preprocessor I’ve used, so it was an interesting experience. This is a review of the language after using it in a project.</p>
+<h2 id="Indepth"><a href="#Indepth" class="headerlink" title="Indepth"></a><a href="#Indepth" title="Indepth">Indepth</a></h2><p>Overall, livescript is more consise than vanilla JS. Take for example the guard syntax in livescript which is syntactical sugar for JS switch&#x2F;case:</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">letters</span> = <span class="params">(a)</span> -&gt;</span>                                          </span><br><span class="line">    | a == <span class="string">&quot;b&quot;</span> =&gt; <span class="string">&quot;second letter&quot;</span></span><br><span class="line">    | a == <span class="string">&quot;a&quot;</span> =&gt; <span class="string">&quot;first letter&quot;</span></span><br><span class="line">    | <span class="keyword">otherwise</span> =&gt; <span class="string">&quot;another letter&quot;</span></span><br><span class="line">letters <span class="string">&quot;d&quot;</span> <span class="comment"># another letter</span></span><br><span class="line">letters <span class="string">&quot;a&quot;</span> <span class="comment"># first letter</span></span><br><span class="line">letters <span class="string">&quot;b&quot;</span> <span class="comment"># second letter</span></span><br></pre></td></tr></table></figure>
+
+<p>As you can see, compared to a JS switch&#x2F;case it is much less verbose.</p>
+<h3 id="Comprehensions-and-Ranges"><a href="#Comprehensions-and-Ranges" class="headerlink" title="Comprehensions and Ranges"></a><a href="#Comprehensions-and-Ranges" title="Comprehensions and Ranges">Comprehensions and Ranges</a></h3><p>Other awesome features of livescript include the list comprehension and ranges. Python and Haskell both have these features and I find myself using them often. Here is an example:</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[i <span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">0</span> <span class="keyword">to</span> <span class="number">10</span>]] <span class="comment"># [0,1,2,3,4,5,6,7,8,9,10]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Strict-equality-and-Immutability"><a href="#Strict-equality-and-Immutability" class="headerlink" title="Strict equality and Immutability"></a><a href="#Strict-equality-and-Immutability" title="Strict equality and Immutability">Strict equality and Immutability</a></h3><p>The livescript <code>==</code> is by default strict equality and all types are immutable. You can reassign variables and use regular equality with special syntax. I like that it gives you the ability to still do regular equality, but I really appreciate that strict rules are encouraged which can prevent some headaches.</p>
+<h3 id="Currying-Piping-Partial-application"><a href="#Currying-Piping-Partial-application" class="headerlink" title="Currying, Piping, Partial application"></a><a href="#Currying-Piping-Partial-application" title="Currying, Piping, Partial application">Currying, Piping, Partial application</a></h3><p>You can partially apply a function in livescript and map each element of an array over that function, it’s really cool, check it out:</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">map</span> (^<span class="number">3</span>), <span class="keyword">map</span> (* <span class="number">2</span>), <span class="keyword">map</span> (+ <span class="number">2</span>), [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>] <span class="comment"># [216,512,1000]</span></span><br></pre></td></tr></table></figure>
+
+<p>Operators can be prefix in livescript.</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(^) <span class="number">3</span> <span class="number">5</span> <span class="comment"># 243</span></span><br></pre></td></tr></table></figure>
+
+<p>Livescript also has a special syntax for currying (<code>--&gt;</code>). This means that you don’t need to pass all the variables a function requires at once, you can pass any number of variables and assign that partially applied function to another variable for later use.</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">animal</span> = <span class="params">(cls, species, age)</span> --&gt;</span> <span class="string">&quot;This animal is a <span class="subst">#&#123;cls&#125;</span>, known by its species name of <span class="subst">#&#123;species&#125;</span>. It has an age of <span class="subst">#&#123;age&#125;</span>.&quot;</span></span><br><span class="line"></span><br><span class="line">mammal = animal(<span class="string">&quot;mammal&quot;</span>)</span><br><span class="line">dog = mammal(<span class="string">&quot;dog&quot;</span>)</span><br><span class="line">jack = dog(<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+
+<p>The last thing I want to talk about is piping, you can run data through a sort of pipe and get an output that reflects the operations performed on that data inside the pipe. This improves readability, and as you can see, all the functions in the pipe are pure and do not mutate the original data by default. (Note that for these features you will need to have <a target="_blank" rel="noopener" href="http://www.preludels.com/">preludels</a>)</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">arr = [<span class="keyword">to</span> <span class="number">20</span>]</span><br><span class="line">arr |&gt; filter even </span><br><span class="line">    |&gt; foldl <span class="function"><span class="params">((acc, y) -&gt; acc ++ (* <span class="number">2</span>) y)</span>, [] </span></span><br><span class="line"><span class="function">    |&gt; <span class="title">groupBy</span> <span class="params">(&gt; <span class="number">10</span>)</span></span></span><br><span class="line"><span class="function">    </span></span><br><span class="line"><span class="function"><span class="title">arr</span> # <span class="title">orginal</span> <span class="title">array</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a><a href="#Conclusion" title="Conclusion">Conclusion</a></h2><p>There are so many interesting things you can do with livescript, I’ve just scratched the surface here to what is possible. I did enjoy using livescript to make a project and would recommend that you give livescript a try. Although, maybe there is a better option than livescript (let me know).</p>
+<h2 id="Other-Resources"><a href="#Other-Resources" class="headerlink" title="Other Resources"></a><a href="#Other-Resources" title="Other Resources">Other Resources</a></h2><p>Check out: <a target="_blank" rel="noopener" href="https://learnxinyminutes.com/docs/livescript/">Learn Livescript in x mins</a> for deeper dive into the prepocessor.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Posts</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-number">1.</span> <span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Indepth"><span class="toc-number">2.</span> <span class="toc-text">Indepth</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Comprehensions-and-Ranges"><span class="toc-number">2.1.</span> <span class="toc-text">Comprehensions and Ranges</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Strict-equality-and-Immutability"><span class="toc-number">2.2.</span> <span class="toc-text">Strict equality and Immutability</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Currying-Piping-Partial-application"><span class="toc-number">2.3.</span> <span class="toc-text">Currying, Piping, Partial application</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">3.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other-Resources"><span class="toc-number">4.</span> <span class="toc-text">Other Resources</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2017/11/13/Livescript-Review/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2017/11/13/Livescript-Review/&text=Livescript Review"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2017/11/13/Livescript-Review/&title=Livescript Review"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2017/11/13/Livescript-Review/&is_video=false&description=Livescript Review"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Livescript Review&body=Check out this article: http://example.com/2017/11/13/Livescript-Review/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2017/11/13/Livescript-Review/&title=Livescript Review"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2017/11/13/Livescript-Review/&title=Livescript Review"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2017/11/13/Livescript-Review/&title=Livescript Review"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2017/11/13/Livescript-Review/&title=Livescript Review"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2017/11/13/Livescript-Review/&name=Livescript Review&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2017/11/13/Livescript-Review/&t=Livescript Review"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2022
+    Devin Miller
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Posts</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
