@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Introduction In this post I will cover the updates to the foreign language reading application that I have continued developing. If you haven’t read the previous post, Foreign Language Reader Project,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Language Reader Development Progress Update 1">
+<meta property="og:url" content="https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/index.html">
+<meta property="og:site_name" content="Personal Blog">
+<meta property="og:description" content="Introduction In this post I will cover the updates to the foreign language reading application that I have continued developing. If you haven’t read the previous post, Foreign Language Reader Project,">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/Profile-Dark.PNG">
+<meta property="og:image" content="https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/Badges.PNG">
+<meta property="og:image" content="https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/Profile-Light.PNG">
+<meta property="og:image" content="https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/Reader-View.PNG">
+<meta property="og:image" content="https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/Text-Selection.PNG">
+<meta property="article:published_time" content="2022-08-22T22:12:49.000Z">
+<meta property="article:modified_time" content="2022-08-23T19:35:37.462Z">
+<meta property="article:author" content="Devin Miller">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="language-reader">
+<meta property="article:tag" content="node">
+<meta property="article:tag" content="express">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/Profile-Dark.PNG">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/blog/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/blog/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Language Reader Development Progress Update 1</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/blog/">Home</a></li><!--
+     --><!--
+       --><li><a href="/blog/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/blog/archives/">Posts</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/edwin0258">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/blog/2022/07/19/Foreign-Language-Reader-Project/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&text=Language Reader Development Progress Update 1"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&title=Language Reader Development Progress Update 1"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&is_video=false&description=Language Reader Development Progress Update 1"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Language Reader Development Progress Update 1&body=Check out this article: https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&title=Language Reader Development Progress Update 1"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&title=Language Reader Development Progress Update 1"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&title=Language Reader Development Progress Update 1"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&title=Language Reader Development Progress Update 1"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&name=Language Reader Development Progress Update 1&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&t=Language Reader Development Progress Update 1"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Profile-Updates"><span class="toc-number">2.</span> <span class="toc-text">Profile Updates</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#More-Chart-Options"><span class="toc-number">2.0.1.</span> <span class="toc-text">More Chart Options</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Badges"><span class="toc-number">2.0.2.</span> <span class="toc-text">Badges</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Statistics-breakdown"><span class="toc-number">2.0.3.</span> <span class="toc-text">Statistics breakdown</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Calendar-heatmap"><span class="toc-number">2.0.4.</span> <span class="toc-text">Calendar heatmap</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reader-Updates"><span class="toc-number">3.</span> <span class="toc-text">Reader Updates</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Embedded-youtube-video"><span class="toc-number">3.0.1.</span> <span class="toc-text">Embedded youtube video</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Text-completion"><span class="toc-number">3.0.2.</span> <span class="toc-text">Text completion</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Keyboard-shortcuts"><span class="toc-number">3.0.3.</span> <span class="toc-text">Keyboard shortcuts</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main-View-Updates"><span class="toc-number">4.</span> <span class="toc-text">Main View Updates</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Language Reader Development Progress Update 1
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Devin Miller</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-08-22T22:12:49.000Z" itemprop="datePublished">2022-08-22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/blog/tags/express/" rel="tag">express</a>, <a class="tag-link-link" href="/blog/tags/javascript/" rel="tag">javascript</a>, <a class="tag-link-link" href="/blog/tags/language-reader/" rel="tag">language-reader</a>, <a class="tag-link-link" href="/blog/tags/node/" rel="tag">node</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><a href="#Introduction" title="Introduction">Introduction</a></h2><hr>
+<p>In this post I will cover the updates to the foreign language reading application that I have continued developing. If you haven’t read the previous post, <a href="/blog/2022/07/19/Foreign-Language-Reader-Project/" title="Foreign Language Reader Project">Foreign Language Reader Project</a>, I would recommend reading that first as it provides more background information about the application.</p>
+<h2 id="Profile-Updates"><a href="#Profile-Updates" class="headerlink" title="Profile Updates"></a><a href="#ProfileUpdates" title="Profile Updates">Profile Updates</a></h2><hr>
+<p>The profile page is where I concentrated most of my effort over the past month. Before, it felt like I wasn’t displaying much information about my language learning progress, and the page felt empty overall for a profile page. Currently, the page feels much more useful. I will list all the changes&#x2F;additions I made and then talk about some of them in more depth.</p>
+<p>Here is the new profile page in dark mode:<br><img src="./Profile-Dark.PNG" alt="Profile View Dark"></p>
+<p>Changes&#x2F;Additions:</p>
+<ul>
+<li>Users can select a period for a chart such as Days, Months, and All Time.</li>
+<li>View time listened, words read statistics</li>
+<li>View a calendar heat map of words known, words learning, words read, and time listened</li>
+<li>Earn badges for milestones in various statistics</li>
+<li>View and Create a profile description</li>
+<li>View a summary of languages a user is learning and their known word counts</li>
+<li>View detailed statistics breakdown with different time period options</li>
+<li>Compare current progress to past progress in various time periods</li>
+<li>Add or Subtract words read, time listened, and texts completed</li>
+</ul>
+<h4 id="More-Chart-Options"><a href="#More-Chart-Options" class="headerlink" title="More Chart Options"></a>More Chart Options</h4><p>The last time I showed the application, a user could only view a chart of their entire history for words learning and known. Now a user can select the time period between days and months. A user can also choose how many months or days to display on the chart. I have also added the ability to view words read and time listened on the chart. These new options give the user more access to their learning history statistics in a chart form.</p>
+<h4 id="Badges"><a href="#Badges" class="headerlink" title="Badges"></a>Badges</h4><p>In an attempt to add some gamification to the application, I have added badges a user can earn in the application. These badges are displayed on a user’s profile page. Adding badges is a start to adding gamification to the application and making it more fun&#x2F;interesting to use.</p>
+<p>This image shows all of the badges that a user can earn currently:<br><img src="./Badges.PNG" alt="Profile View Light"></p>
+<p>The badges cover words known, words read, and listening time in each language. The profile page only shows the highest badge obtained in each category in the currently selected language. </p>
+<h4 id="Statistics-breakdown"><a href="#Statistics-breakdown" class="headerlink" title="Statistics breakdown"></a>Statistics breakdown</h4><p>Below the badges a user can now view the tracked statistics in different time periods. This table also shows the past period besides the current one for comparison. For example, in the image below, I have read 1007 words in French over the past week, which is 7516 fewer words of reading than last week. The time periods include: 7 days, 30 days, 6 months, 1 year, and all time. There are also + buttons that open a form where users can add or subtract from their words read, minutes listened, and texts completed.</p>
+<p><img src="./Profile-Light.PNG" alt="Profile View Light"></p>
+<h4 id="Calendar-heatmap"><a href="#Calendar-heatmap" class="headerlink" title="Calendar heatmap"></a>Calendar heatmap</h4><p>I like the calendar heatmap on GitHub, so I thought I would add the same feature to my application. The data displayed on the heatmap depends on the selected data type and the current language. This heatmap gives the user another chart to use and understand how they are doing.</p>
+<h2 id="Reader-Updates"><a href="#Reader-Updates" class="headerlink" title="Reader Updates"></a><a href="#ReaderUpdates" title="Reader Updates">Reader Updates</a></h2><hr>
+<p>The reader view has also received some updates. I think these updates make the reader easier to use and more enjoyable. I will list the changes and additions to this page and then cover them in more depth.</p>
+<p>Here is the current reader view in light mode:<br><img src="./Reader-View.PNG" alt="Reader View Light"></p>
+<p>Changes&#x2F;Additions:</p>
+<ul>
+<li>Users can view an embedded youtube video directly in the application</li>
+<li>Add to words read and time listened statistics by completing texts</li>
+<li>Use keyboard shortcuts to carry out most actions within the reader</li>
+</ul>
+<h4 id="Embedded-youtube-video"><a href="#Embedded-youtube-video" class="headerlink" title="Embedded youtube video"></a>Embedded youtube video</h4><p>When viewing a text imported from youtube, the user can now view and listen to the video directly in the application. It also makes it easier to find the video at a later date instead of searching the youtube platform with the title text.</p>
+<h4 id="Text-completion"><a href="#Text-completion" class="headerlink" title="Text completion"></a>Text completion</h4><p>A user can now complete a text. The image example shows a green check mark button when the user is on the last page of the text. Clicking this button will complete a text. Completing a text will add the number of words in the text to the user’s words read, and the video length in minutes to time listened if this is the last text in a collection for a video. </p>
+<h4 id="Keyboard-shortcuts"><a href="#Keyboard-shortcuts" class="headerlink" title="Keyboard shortcuts"></a>Keyboard shortcuts</h4><p>Users can now use keyboard shortcuts to perform most actions within the reader view. Below is a table of the page actions and their corresponding keys:</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Key</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Translate Word</td>
+<td>t</td>
+</tr>
+<tr>
+<td>Listen to Word</td>
+<td>s</td>
+</tr>
+<tr>
+<td>Exit Word Widget</td>
+<td>q</td>
+</tr>
+<tr>
+<td>Open Next Word Widget</td>
+<td>d</td>
+</tr>
+<tr>
+<td>Open Previous Word Widget</td>
+<td>a</td>
+</tr>
+<tr>
+<td>Set Word Status</td>
+<td>1, 2, 3, 0, r</td>
+</tr>
+<tr>
+<td>Next Page</td>
+<td>g</td>
+</tr>
+<tr>
+<td>Previous Page</td>
+<td>f</td>
+</tr>
+</tbody></table>
+<h2 id="Main-View-Updates"><a href="#Main-View-Updates" class="headerlink" title="Main View Updates"></a><a href="#MainUpdates" title="Main Updates">Main View Updates</a></h2><hr>
+<p>I also added a new column for texts in the main text selection view that tells a user if a text has been completed before. A checkmark indicates a text has been completed at least once.</p>
+<p>Here is an example within my Portuguese youtube video collection where there are three texts that I have completed:<br><img src="./Text-Selection.PNG" alt="Main View With Update"></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a><a href="#Conclusion" title="Conclusion">Conclusion</a></h2><hr>
+<p>The past month has gone well in terms of development progress. I’m excited to continue improving the application and making something that I enjoy using for a long time.</p>
+<p>There are still many things I still want to do and improve with the application that I didn’t mention in my first post:</p>
+<ul>
+<li>More JavaScript testing</li>
+<li>Ability to export learning statistics and words</li>
+<li>Ability to add more meta-information to texts and collections</li>
+<li>Vocab Review ability</li>
+<li>Text completion and badge awarding pages</li>
+<li>Progress bar in reader view</li>
+<li>More reader text aesthetic options such as text size and color</li>
+<li>Option to navigate to the next text on previous text completion</li>
+<li>View a list of other texts in the current collection inside the reader</li>
+</ul>
+<p>Thanks for reading!<br>Until the next update post,<br>Devin Miller</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/blog/">Home</a></li>
+         
+          <li><a href="/blog/about/">About</a></li>
+         
+          <li><a href="/blog/archives/">Posts</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/edwin0258">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Profile-Updates"><span class="toc-number">2.</span> <span class="toc-text">Profile Updates</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#More-Chart-Options"><span class="toc-number">2.0.1.</span> <span class="toc-text">More Chart Options</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Badges"><span class="toc-number">2.0.2.</span> <span class="toc-text">Badges</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Statistics-breakdown"><span class="toc-number">2.0.3.</span> <span class="toc-text">Statistics breakdown</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Calendar-heatmap"><span class="toc-number">2.0.4.</span> <span class="toc-text">Calendar heatmap</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reader-Updates"><span class="toc-number">3.</span> <span class="toc-text">Reader Updates</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Embedded-youtube-video"><span class="toc-number">3.0.1.</span> <span class="toc-text">Embedded youtube video</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Text-completion"><span class="toc-number">3.0.2.</span> <span class="toc-text">Text completion</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Keyboard-shortcuts"><span class="toc-number">3.0.3.</span> <span class="toc-text">Keyboard shortcuts</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Main-View-Updates"><span class="toc-number">4.</span> <span class="toc-text">Main View Updates</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&text=Language Reader Development Progress Update 1"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&title=Language Reader Development Progress Update 1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&is_video=false&description=Language Reader Development Progress Update 1"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Language Reader Development Progress Update 1&body=Check out this article: https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&title=Language Reader Development Progress Update 1"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&title=Language Reader Development Progress Update 1"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&title=Language Reader Development Progress Update 1"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&title=Language Reader Development Progress Update 1"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&name=Language Reader Development Progress Update 1&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://edwin0258.github.io/blog/2022/08/22/Language-Reader-Development-Progress-Update-1/&t=Language Reader Development Progress Update 1"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2022
+    Devin Miller
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/blog/">Home</a></li><!--
+     --><!--
+       --><li><a href="/blog/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/blog/archives/">Posts</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/edwin0258">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/blog/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
